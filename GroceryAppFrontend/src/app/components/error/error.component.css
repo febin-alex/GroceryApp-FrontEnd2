@@ -1,0 +1,11 @@
+.wrapper{
+    min-height: 100vh;
+    /* background-image: url('https://cdn.pixabay.com/photo/2019/03/13/11/07/supermarket-4052658_640.jpg'); */
+    background-size: cover;
+    background-color: black;
+    text-align: center;
+    color: white;
+   
+   
+}
+

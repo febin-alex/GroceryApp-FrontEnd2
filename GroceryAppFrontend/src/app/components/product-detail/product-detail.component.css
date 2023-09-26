@@ -1,0 +1,30 @@
+.container{
+    width: auto;
+    height: auto;
+    background-color: rgb(167, 226, 167);
+    border-radius: 20px;
+ 
+}
+.wrapper{
+   min-height: 440px;
+   
+    padding: 20px;
+}
+#ProductImg{
+    height: 400px;
+    border-radius: 20px;
+ 
+}
+.mrp{
+    opacity: 0.5;
+}
+.saving{
+    opacity: 0.75;
+}
+.btn{
+    background-color: brown;
+    color: white;
+    padding: 10px 10px 10px 10px;
+    text-align: center;
+    
+}

@@ -1,0 +1,22 @@
+.container{
+    min-height: 400px;
+    padding: 15px;
+    
+   
+}
+.empty-cart{
+    margin: auto;
+    
+    padding-top: 10%;
+    min-height: 400px;
+    vertical-align: middle;
+    
+}
+table{
+    background-color: antiquewhite;
+   
+}
+
+td{
+    padding: 30px;
+}

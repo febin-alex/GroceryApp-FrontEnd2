@@ -1,0 +1,68 @@
+
+<div class="container" >
+
+  <div id="carouselExampleControls"  class="carousel slide" data-ride="carousel" style="background-color: pink;padding: 25px;border-radius: 25px;">
+
+      <div class="carousel-inner" >
+
+          <div class="carousel-item active" >
+            <div class="container-fluid"   style="padding: 10;margin: 10px;">
+              <div class="row ">   
+                <div class="col-sm-5 " style="text-align: center;align-items: center ;display: flex;justify-content: center;">
+                  <div>
+                    <h2 style="font-weight: bolder;font-size: 40px;">Everything tastes better with a little #Freshness </h2>
+                    <br>
+                  <p style="font-size: 25px;">Fresh Fruits & Vegetables at your fingertips</p>
+                  <br>
+                  <h2>Upto  <span style="color:red;font-weight:900;font-size: 45px;">60% </span>Off </h2>
+                  <br>
+                  <button class="btn btn-danger" routerLink="/category/101">Shop Now</button>
+                  </div>
+                  <br>
+                </div>
+                <div class="col-sm-7">
+                  <img class="img-responsive" src="https://images5.alphacoders.com/785/thumbbig-785197.webp" style="border-radius: 25px;width: 600px;height: 450px;">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item " *ngFor="let category of CategoryHeaderList" >
+            <div class="container-fluid"   style="padding: 10;margin: 10px;">
+              <div class="row ">   
+                <div class="col-sm-5 " style="text-align: center;align-items: center ;display: flex;justify-content: center;">
+                  <div>
+                    <h2 style="font-weight: bolder;font-size: 40px;">{{category.CategoryTitle}}</h2>
+                    <br>
+                  <p style="font-size: 25px;">{{category.CategoryDesc}}</p>
+                  <br>
+                  <h2>Upto  <span style="color:red;font-weight:900;font-size: 45px;">{{category.CategoryOffer}}% </span>Off </h2>
+                  <br>
+                  <button class="btn btn-danger" routerLink={{category.CategoryRouterLink}}>Shop Now</button>
+                  </div>
+                  <br>
+                </div>
+                <div class="col-sm-7">
+                  <img class="img-responsive" src={{category.CategoryUrl}} style="border-radius: 25px;width: 600px;height: 450px;">
+                </div>
+              </div>
+            </div>
+          </div>
+
+      <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls" data-slide="prev">
+
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+
+          <span class="sr-only">Previous</span>
+
+          </button>
+
+          <button class="carousel-control-next" type="button" data-target="#carouselExampleControls" data-slide="next">
+
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+
+          <span class="sr-only">Next</span>
+
+      </button>
+
+
+

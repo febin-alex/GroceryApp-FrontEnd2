@@ -1,0 +1,49 @@
+*{
+    color:green;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.mrp{
+    color:rgb(91, 139, 91);
+    font-size: 16px;
+    margin-left: 10px;
+    font-weight:350;
+}
+
+.card{
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 3px 3px #ccc;
+    margin-bottom:25px;
+}
+
+.card img{
+    border: 1px solid #ccc;
+    border-bottom:none;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    box-shadow: 1px 1px #ccc;
+}
+
+.card-body{
+    background-color: rgb(219, 230, 205);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+a:hover{
+    text-decoration:none;
+}
+
+a:hover .card{
+    box-shadow: 3px 3px #818181;
+}
+
+p{
+    margin-bottom:0;
+    font-size:15px;
+}
+.container{
+    min-height: 400px;
+    padding: 15px;
+    
+}

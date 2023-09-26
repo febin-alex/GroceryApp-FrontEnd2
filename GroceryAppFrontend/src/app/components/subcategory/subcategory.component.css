@@ -1,0 +1,13 @@
+a{
+    background-color: rgb(219, 230, 205);
+    color: black;
+}
+
+a:hover{
+    background-color: rgb(91, 139, 91);
+    color: white;
+    text-decoration: none;
+}
+a:active{
+    background-color: rgb(91, 139, 91);
+}

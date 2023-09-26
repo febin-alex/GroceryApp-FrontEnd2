@@ -1,0 +1,27 @@
+.marquee1 {
+    margin: 50px 50px 50px 0px;
+    height: 100px;
+}
+.btns{
+    display: flex;
+    justify-content: center;
+}
+.btn{
+    margin:10px;
+}
+h5{
+    display: flex;
+    justify-content: center;
+}
+.card-deck {
+    width: 75%; 
+    margin-left: 12.5%;
+    margin-right: 12.5%;
+    display: flex;
+    justify-content: center;
+
+}
+.card-text{
+    display: flex;
+    justify-content: center;
+}

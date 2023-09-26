@@ -1,0 +1,32 @@
+ 
+ 
+ <div class="empty-cart text-center" *ngIf="cart.length==0"><h2>OOPS!!! Cart is empty</h2></div>
+ <div class="container" *ngIf="cart.length>0">
+    
+    <h2>Cart  ({{ cart.length }})</h2>
+    
+     
+    
+        <table class="table" style="font-size: 23px;">
+    <tbody>
+    <tr *ngFor="let product of cart index as i">
+    <td><img src="{{product['ProductUrl']}}" width="100" alt=""> </td>
+    <td >{{ product['ProductName'] }}</td>
+   
+    <td>{{ product['DiscountedPrice']  | currency : 'INR' }}</td>
+     
+     <td><button class="btn btn-danger"  (click)="removeFromCart(i)">Remove from Cart</button></td>
+    
+    </tr>
+    <tr >
+        <td></td>
+        <td></td>
+        <td><h3>Total: {{getTotalPrice() | currency : 'INR' }}</h3></td>
+        <td> <button class="btn btn-success" (click)="clearCart()"  >Buy Now</button></td>
+    </tr>
+    </tbody>
+    </table>
+    
+    
+    </div> 
+  

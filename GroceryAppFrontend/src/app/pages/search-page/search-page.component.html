@@ -1,0 +1,30 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+    <br><br>
+    <div class="empty-cart text-center" *ngIf="allProducts.length==0"><h2>Item not found</h2></div>
+    <div class="row">
+            <div class="col-md-3" *ngFor="let product of allProducts">
+                <a routerLink="/products/{{product.Id}}">
+                    <div class="card">
+                        <img src={{product.ProductUrl}} alt={{product.ProductName}} class="card-image-top">
+                        <div class="card-body">
+                            <h5 class="card-title">{{product.ProductName}}</h5>
+                            <br>
+                            <p class="card-text">1 {{product.UnitType}}</p>
+                            <h5>
+                                {{product.DiscountedPrice|currency:'INR'}}
+                                <span class="mrp">
+                                    <del>{{product.UnitPrice|currency:'INR'}}</del>
+                                </span>
+                            </h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+    </div>
+    <br><br>
+</div>
+
+
+<app-footer></app-footer>

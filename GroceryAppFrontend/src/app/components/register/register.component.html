@@ -1,0 +1,87 @@
+<div class="container">
+                 <div class="wrapper">
+                <div class={{alertClass}} role="alert" style="padding: 5px; margin-top: 10px;">
+                    {{textMess}}
+                  </div>
+                <h2>Register</h2>
+                <form #registerForm="ngForm" (submit)="onSubmitHandle()">  
+                    <div class="form-row">
+                        <div class="form-group">
+                          <label for="firstname">First Name</label>
+                          <input type="text" name="firstname" id="firstname" [(ngModel)]="userModel.FirstName" class="form-control"
+                            required #firstName="ngModel" [class.is-invalid]="firstName.touched && firstName.invalid">
+                          <small [class.d-none]="firstName.valid || firstName.untouched" class="text-danger">First Name is required</small>
+                        </div>
+                        
+                        <div class="form-group">
+                          <label for="lastname">Last Name</label>
+                          <input type="text" name="lastname" id="lastname" [(ngModel)]="userModel.LastName" class="form-control"
+                            required #lastName="ngModel" [class.is-invalid]="lastName.touched && lastName.invalid">
+                          <small [class.d-none]="lastName.valid || lastName.untouched" class="text-danger">Last Name is required</small>
+                        </div>
+                      </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="mobile">Mobile Number</label>
+                                <input type="text" name="mobile" id="mobile" [(ngModel)]="userModel.MobileNo" class="form-control"
+                                required #number="ngModel" pattern="^\d{10}$" [class.is-invalid]="number.touched && number.invalid">
+                                <div *ngIf="number.errors && number.touched">
+                                    <small class="text-danger" *ngIf="number.errors['required']">Mobile Number is required</small>
+                                    <small class="text-danger" *ngIf="number.errors['pattern']">Number must be of 10 digits</small>
+                                </div>
+                            </div>  
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" [(ngModel)]="userModel.Email" class="form-control"
+                            #mail="ngModel" required pattern="[a-z0-9.%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  [class.is-invalid]="mail.touched && mail.invalid">
+                            <div *ngIf="mail.errors && mail.touched">
+                                <small class="text-danger" *ngIf="mail.errors['required']">Email is required</small>
+                                <small class="text-danger" *ngIf="mail.errors['pattern']">Email must be valid</small>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password" [(ngModel)]="userModel.Password" class="form-control"
+                            required #password="ngModel" minlength="6" [class.is-invalid]="password.touched && password.invalid">
+                            <div *ngIf="password.errors && password.touched">
+                                <small class="text-danger" *ngIf="password.errors['required']">Password is required</small>
+                                <small class="text-danger" *ngIf="password.errors['minlength']">Password must be atleast 6 characters long</small>
+                            </div>
+                        </div>
+                       
+                        <div class="form-group">
+                            <label for="dateOfBirth">Date of Birth</label>
+                            <input type="date" name="dateOfBirth" id="dateOfBirth"  [(ngModel)]="userModel.DateOfBirth" class="form-control"
+                            required #dateofbirth="ngModel" [class.is-invalid]="dateofbirth.touched && dateofbirth.invalid">
+                            <div *ngIf="dateofbirth.errors && dateofbirth.touched">
+                                <small class="text-danger" *ngIf="dateofbirth.errors['required']">Date of Birth is required</small>
+                            </div>
+                        </div>
+                      </div>
+                    
+                        <div class="form-group">
+                            <label>Gender</label>
+                            <div class="radio-buttons">
+                              <div class="form-check form-check-inline">
+                                <input type="radio" id="male" name="gender" value="male" [(ngModel)]="userModel.Gender" required #gender="ngModel"
+                                  [class.is-invalid]="gender.touched && gender.invalid">
+                                <label for="male" class="form-check-label">Male</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input type="radio" id="female" name="gender" value="female" [(ngModel)]="userModel.Gender" required #gender="ngModel"
+                                  [class.is-invalid]="gender.touched && gender.invalid">
+                                <label for="female" class="form-check-label">Female</label>
+                              </div>
+                            </div>
+                            <small [class.d-none]="gender.valid || gender.untouched" class="text-danger">Gender is required</small>
+                          </div>
+                        <input type="submit" [disabled]="registerForm.invalid" value="Register" class="btn btn-success btn-block">
+               
+                </form>
+                <br>
+                <p class="text-center">Already Registered? <a class="text-success" routerLink="/login">Click Here</a></p>
+             </div>
+</div>
+
