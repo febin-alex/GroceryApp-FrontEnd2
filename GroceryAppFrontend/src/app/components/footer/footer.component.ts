@@ -8,17 +8,9 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent {
-
-
-
   categories:ICategory[]=[];
-
-  
-
-
   constructor(private dataService:DataService){
-    
-
+    //To get all Categories
     this.dataService.getCategories().subscribe((response:any)=>{
       this.categories=response;
     })

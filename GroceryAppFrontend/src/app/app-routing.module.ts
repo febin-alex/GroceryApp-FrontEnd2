@@ -26,7 +26,7 @@ const routes: Routes = [
   {path:'login',component:LoginPageComponent},
   {path:'register',component:RegisterPageComponent},
   {path:'cart',component:CartPageComponent,canActivate:[authGuard]},
-  {path:'buy',component:BuyPageComponent},
+  {path:'buy',component:BuyPageComponent,canActivate:[authGuard]},
   {path:'**',component:ErrorPageComponent}
 
 ];

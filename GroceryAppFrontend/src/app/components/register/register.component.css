@@ -4,12 +4,9 @@
 } 
 .wrapper{
     background-color: hsla(0, 9%, 4%, 0.5);
-    /* border: 1px solid white; */
     color:white;
      padding: 2px 40px 2px 40px; 
-    /* margin-top: 100px;
-    margin-left: 200px; */
-    border-radius: 10px;
+     border-radius: 10px;
     width: 800px;
 }
 

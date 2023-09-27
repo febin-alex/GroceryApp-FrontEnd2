@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/users.model';
@@ -10,39 +11,58 @@ import { AuthGuardService } from 'src/app/services/auth-guard.service';
 })
 export class RegisterComponent {
 
-  userModel=new User();
-  textMess='';
-  alertClass='';
+  userModel = new User();
+  textMess = '';
+  alertClass = '';
+  num: Number = 1;
 
-
-  constructor(private authService:AuthGuardService,private router : Router){}
-  onSubmitHandle(){
-    console.log(this.userModel)
-    //this.CalculateAge();
-   this.authService.register(this.userModel).subscribe((res:any)=>{
-    
-   this.alertClass='alert alert-success';
-   this.textMess="Registered Successfully";
-   this.router.navigateByUrl("/login");
-   
-
-   },(error)=>{
-     console.log(error);
-     this.alertClass='alert alert-danger';
-   this.textMess="Failed";
-   })
+  constructor(private authService: AuthGuardService, private router: Router) { }
+  //Register Function
+  onSubmitHandle() {
+      if (this.CalculateAge()) {
+      this.authService.register(this.userModel).subscribe((res: any) => {
+        if (res.status == "success") {
+          this.alertClass = 'alert alert-success';
+          this.textMess = "Registered Successfully";
+          this.router.navigateByUrl("/login");
+        }
+        else {
+          this.alertClass = 'alert alert-danger';
+          this.textMess = res.message;
+        }
+      }, (error: any) => {
+        this.alertClass = 'alert alert-danger';
+        this.textMess = error.message;
+      })
+    }
+    else {
+      this.alertClass = 'alert alert-danger';
+      this.textMess = "User must be above 18 years old";
+    }
   }
-  // CalculateAge() {
-  //   var dob = this.userModel.DateOfBirth;
-  //    var de = new Date(dob?.toString);
-  //   var today = new Date();
-  //  console.log(today.toLocaleDateString());
-  //  console.log(dob?.toLocaleDateString());
-  // //  Date sukj=new Date(today).valueOf() - dob.;
-  // //  var age = Math.floor((today - dob) / (365.25 * 24 * 60 * 60 * 1000));
-  //   // return age;
-  // }
-  
+
+  //To check whether the user is above 18 years of age
+  CalculateAge() {
+    var dob = String(this.userModel.DateOfBirth);
+    var currentDate = new Date();
+    const cValue = formatDate(currentDate, 'yyyy-MM-dd', 'en-US');
+    var year = dob.slice(0, 4);
+    var month = dob.slice(5, 7);
+    var day = dob.slice(8, 10);
+    var PYr = cValue.slice(0, 4);
+    var Pmonth = cValue.slice(5, 7);
+    var Pday = cValue.slice(8, 10);
+    var age = Number.parseInt(PYr) - Number.parseInt(year);
+    var age_month = Number.parseInt(Pmonth) - Number.parseInt(month);
+    var age_day = Number.parseInt(Pday) - Number.parseInt(day);
+
+    if ((age == 18 && age_month <= 0 && age_day <= 0) || age < 18) {
+      return false;
+    }
+    return true;
+
+  }
+
 
 }
 

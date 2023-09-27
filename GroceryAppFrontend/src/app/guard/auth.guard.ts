@@ -12,23 +12,14 @@ import { AuthGuardService } from '../services/auth-guard.service';
 export class authGuard implements CanActivate {
 
   constructor(private authService:AuthGuardService,private router:Router){}
-
- 
-
   canActivate(): boolean {
-
     if(this.authService.checkToken()){
-
       return true;
 
     }else{
-
       this.router.navigateByUrl('login');
-
       return false;
-
     }
-
   }
 
 };

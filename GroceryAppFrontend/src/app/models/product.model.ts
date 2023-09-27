@@ -1,6 +1,3 @@
-import { ICategory } from "./category.model";
-import { ISubcategory } from "./subcategory.model";
-
 export interface IProduct{
     Id:number;
     ProductName:string;

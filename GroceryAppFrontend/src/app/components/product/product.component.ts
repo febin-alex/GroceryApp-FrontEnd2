@@ -10,43 +10,41 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ProductComponent {
 
-  products:IProduct[]=[];
-  catId:any;
-  subCatId:any;
-  productName:any;
-  allProducts:IProduct[]=[];
-  allCategoryProducts:IProduct[]=[];
-counter:any;
-  constructor(private dataService:DataService,private activatedRoute:ActivatedRoute){
-this.counter=0;
-  this.catId = activatedRoute.snapshot.paramMap.get('catId');
-  this.subCatId = activatedRoute.snapshot.paramMap.get('subCatId');
+  products: IProduct[] = [];
+  catId: any;
+  subCatId: any;
+  productName: any;
+  allProducts: IProduct[] = [];
+  allCategoryProducts: IProduct[] = [];
+  counter: any;
+  constructor(private dataService: DataService, private activatedRoute: ActivatedRoute) {
+    this.counter = 0;
+    this.catId = activatedRoute.snapshot.paramMap.get('catId');
+    this.subCatId = activatedRoute.snapshot.paramMap.get('subCatId');
 
 
+    //To get all Products in a particular Category
 
-  this.dataService.getAllProducts().subscribe((response:any) =>{
-    this.allProducts=response;
-    console.log(response);
-    for(let pdt in this.allProducts){
-     if(this.allProducts[pdt].CategoryId==this.catId){
-      this.allCategoryProducts[this.counter]=this.allProducts[pdt];
-      this.counter++;
+    this.dataService.getAllProducts().subscribe((response: any) => {
+      this.allProducts = response;
+      for (let pdt in this.allProducts) {
+        if (this.allProducts[pdt].CategoryId == this.catId) {
+          this.allCategoryProducts[this.counter] = this.allProducts[pdt];
+          this.counter++;
+        }
 
+      }
 
-     }
-    
-    }
-    console.log(this.allProducts)
-  })
-
-
-    this.dataService.getProductsByCatIdAndSubCatId(this.catId,this.subCatId).subscribe((response:any)=>{
-      this.allCategoryProducts=response;
-      console.log()
     })
 
 
-  
-  }
+    //To get all products using Category Id and Subcategory Id
+    this.dataService.getProductsByCatIdAndSubCatId(this.catId, this.subCatId).subscribe((response: any) => {
+      this.allCategoryProducts = response;
+    })
+
+
 
   }
+
+}

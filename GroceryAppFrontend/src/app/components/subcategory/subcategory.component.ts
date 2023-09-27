@@ -12,17 +12,13 @@ export class SubcategoryComponent {
 
 
 
-  catId: any; subcategories: ISubcategory[]=[]; 
-  constructor(private dataservice: DataService, private activatedroute: ActivatedRoute){ 
+  catId: any; subcategories: ISubcategory[] = [];
+  constructor(private dataservice: DataService, private activatedroute: ActivatedRoute) {
 
-
-    this.catId = this.activatedroute.snapshot.paramMap.get('catId'); 
-    this.dataservice.getSubCategoryByCatId(this.catId).subscribe((response: any)=>{
-       this.subcategories = response; }) 
-      
-      
-      }
-
-
-       
+    //To get all Subcategories by Category Id
+    this.catId = this.activatedroute.snapshot.paramMap.get('catId');
+    this.dataservice.getSubCategoryByCatId(this.catId).subscribe((response: any) => {
+      this.subcategories = response;
+    })
+  }
 }

@@ -14,7 +14,7 @@ export class CartComponent implements OnInit{
 
   constructor(private router:Router) { }
 
-
+//To Calculate Total Price of items in cart
   getTotalPrice(): number {
 
     const cartItems = this.getCartItems();
@@ -22,8 +22,6 @@ export class CartComponent implements OnInit{
     let totalPrice = 0;
 
     for (const item of cartItems) {
-
-      // Assuming each item has a 'price' property
 
       totalPrice += item.DiscountedPrice;
     }

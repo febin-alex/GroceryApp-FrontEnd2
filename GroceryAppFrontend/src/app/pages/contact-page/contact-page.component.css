@@ -1,14 +1,11 @@
 .container {
     font-family: Arial, sans-serif;
-   
     padding: 20px;
     background-color: antiquewhite;
 }
 
 header {
-    text-align: center;
-    
-   
+    text-align: center;   
     padding: 20px;
 }
 h1 {

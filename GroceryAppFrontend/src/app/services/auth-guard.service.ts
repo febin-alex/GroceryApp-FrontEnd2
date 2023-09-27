@@ -7,31 +7,31 @@ import { User } from '../models/users.model';
 })
 export class AuthGuardService {
 
-  
-  constructor(private http:HttpClient) { }
+  //Register and Login API Calls
+  constructor(private http: HttpClient) { }
 
-  register(data:User):Observable<any>{
-    return this.http.post<any>("http://localhost:60901/api/User/register",data);
+  register(data: User): Observable<any> {
+    return this.http.post<any>("http://localhost:60901/api/User/register", data);
   }
 
-  login(data:any):Observable<any>{
-    
-     
-    return this.http.post<any>("http://localhost:60901/api/User/login",{Email:data.Email,Password:data.Password});
+  login(data: any): Observable<any> {
+
+
+    return this.http.post<any>("http://localhost:60901/api/User/login", { Email: data.Email, Password: data.Password });
   }
 
 
-  checkToken():boolean{
-    if(localStorage.getItem('token'))
-    return true;
+  checkToken(): boolean {
+    if (localStorage.getItem('token'))
+      return true;
     else
-    return false;
+      return false;
 
   }
 
- 
 
-  logout(){
+
+  logout() {
 
     localStorage.clear();
 
