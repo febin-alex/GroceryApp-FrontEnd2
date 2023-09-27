@@ -10,17 +10,18 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class SearchPageComponent {
 
-  productName:any;
-  allProducts:IProduct[]=[];
-constructor(private dataService:DataService,private activatedRoute:ActivatedRoute){
-  this.productName= activatedRoute.snapshot.paramMap.get('productName');
-  this.dataService.getProductsBySearch(this.productName).subscribe((response:any)=>{
-     
-    this.allProducts=response;
-  
-  
-  });
-}
+  productName: any;
+  allProducts: IProduct[] = [];
+  constructor(private dataService: DataService, private activatedRoute: ActivatedRoute) {
+    //To search the Product based on Product Name
+    this.productName = activatedRoute.snapshot.paramMap.get('productName');
+    this.dataService.getProductsBySearch(this.productName).subscribe((response: any) => {
+
+      this.allProducts = response;
+
+
+    });
+  }
 }
 
 

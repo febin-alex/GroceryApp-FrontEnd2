@@ -13,16 +13,11 @@ export class CategoryComponent {
   categories:ICategory[]=[];
 
   
-
-
   constructor(private dataService:DataService){
-    
-
+    //To get all Categories
     this.dataService.getCategories().subscribe((response:any)=>{
       this.categories=response;
-      console.log("hello");
-      console.log(response[0].CategoryName);
-    })
+         })
   }
 
 }

@@ -9,49 +9,46 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent {
-  product:any;
-  productId:any;
-  
-  cart:IProduct[]=[];
-  constructor(private dataService:DataService,private activatedRoute:ActivatedRoute){
-    
-   
+  product: any;
+  productId: any;
 
-    this.productId= activatedRoute.snapshot.paramMap.get('productId');
-    this.dataService.getProductsById(this.productId).subscribe((response:any)=>{
-      this.product=response;
-      
+  cart: IProduct[] = [];
+  constructor(private dataService: DataService, private activatedRoute: ActivatedRoute) {
+
+    //To get Products by Product Id
+    this.productId = activatedRoute.snapshot.paramMap.get('productId');
+    this.dataService.getProductsById(this.productId).subscribe((response: any) => {
+      this.product = response;
+
     })
   }
-  
+  textMess = '';
+  alertClass = '';
 
+  // Cart Functions
+  private cartKey = 'cart';
 
-  textMess='';
-  alertClass='';
+  addToCart(item: any) {
+    let cartItems = this.getCartItems();
+    cartItems.push(item);
+    localStorage.setItem(this.cartKey, JSON.stringify(cartItems));
+    this.textMess = "Added to cart";
+    this.alertClass = "alert alert-success"
+  }
 
-  
-private cartKey='cart';
+  removeFromCart(index: number) {
+    let cartItems = this.getCartItems();
+    cartItems.splice(index, 1);
+    localStorage.setItem(this.cartKey, JSON.stringify(cartItems));
+  }
 
-addToCart(item: any) { 
-  let cartItems = this.getCartItems(); 
-  cartItems.push(item); 
-  localStorage.setItem(this.cartKey, JSON.stringify(cartItems)); 
-  this.textMess="Added to cart";
-  this.alertClass="alert alert-success"
-  
-} 
-  removeFromCart(index: number) { 
-    let cartItems = this.getCartItems(); 
-    cartItems.splice(index, 1); 
-    localStorage.setItem(this.cartKey, JSON.stringify(cartItems)); 
-  } 
+  getCartItems() {
+    let cartItems = localStorage.getItem(this.cartKey);
+    return cartItems ? JSON.parse(cartItems) : [];
+  }
+  clearCart() {
+    localStorage.removeItem(this.cartKey);
+  }
 
-    getCartItems() { 
-      let cartItems = localStorage.getItem(this.cartKey); 
-      return cartItems ? JSON.parse(cartItems) : []; 
-    } 
-      clearCart() { 
-        localStorage.removeItem(this.cartKey); }
-  
 
 }

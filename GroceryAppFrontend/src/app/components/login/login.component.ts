@@ -16,7 +16,7 @@ export class LoginComponent {
    constructor(private fb: FormBuilder,public authSer:AuthGuardService,public router:Router){
  
     }
-
+//Validation of Login Form
    loginForm=this.fb.group({
     email:["",[Validators.required,Validators.email]],
     password:["",[Validators.required,Validators.minLength(6)]]
@@ -29,7 +29,7 @@ export class LoginComponent {
    get password(){
     return this.loginForm.get('password')
    }
-   
+   //Login Function
    loginHandler(){
   this.userModel.Email=this.email!.value!;
   this.userModel.Password=this.password!.value!;

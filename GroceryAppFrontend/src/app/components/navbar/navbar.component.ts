@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute ,Router} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
 import { ICategory } from 'src/app/models/category.model';
 import { DataService } from 'src/app/services/data.service';
@@ -13,58 +13,49 @@ import { IProduct } from 'src/app/models/product.model';
 export class NavbarComponent {
 
 
-  categories:ICategory[]=[];
-  products:IProduct[]=[];
+  categories: ICategory[] = [];
+  products: IProduct[] = [];
 
-  
-isLoggedIn:any;
 
-  constructor(private dataService:DataService,private authService:AuthGuardService,private router:Router){
+  isLoggedIn: any;
+
+  constructor(private dataService: DataService, private authService: AuthGuardService, private router: Router) {
     
-
-
-this.isLoggedIn=this.authService.checkToken();
-    this.dataService.getCategories().subscribe((response:any)=>{
-      this.categories=response;
+    this.isLoggedIn = this.authService.checkToken();
+    //To get all Categories
+    this.dataService.getCategories().subscribe((response: any) => {
+      this.categories = response;
     })
   }
 
-  onLogin(){
-
+  onLogin() {
     this.router.navigateByUrl('login')
-
   }
 
-  onLogout(){
-
-    
-      this.authService.logout();
-
-      this.router.navigateByUrl('login')
-
-      this.isLoggedIn=false;
-
-      this.isLoggedIn=this.authService.checkToken();
-
+  onLogout() {
+    this.authService.logout();
+    this.router.navigateByUrl('login')
+    this.isLoggedIn = false;
+    this.isLoggedIn = this.authService.checkToken();
   }
 
-  onSearchHandler(name:string){
+
+  //Search Function
+  onSearchHandler(name: string) {
     console.log(name);
-  if(name!=""){
-   // this.router.navigateByUrl("product/"+name);
-   this.router.navigate(["search/"+name]).then(()=>{
-    window.location.reload();
-   })
-  
-  }
-  }
-
-    
+    if (name != "") {
+        this.router.navigate(["search/" + name]).then(() => {
+        window.location.reload();
+      })
+    }
   }
 
 
-  
- 
+}
+
+
+
+
 
 
 
