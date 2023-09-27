@@ -36,19 +36,19 @@ export class ProductDetailComponent {
     this.alertClass = "alert alert-success"
   }
 
-  removeFromCart(index: number) {
-    let cartItems = this.getCartItems();
-    cartItems.splice(index, 1);
-    localStorage.setItem(this.cartKey, JSON.stringify(cartItems));
-  }
+  // removeFromCart(index: number) {
+  //   let cartItems = this.getCartItems();
+  //   cartItems.splice(index, 1);
+  //   localStorage.setItem(this.cartKey, JSON.stringify(cartItems));
+  // }
 
   getCartItems() {
     let cartItems = localStorage.getItem(this.cartKey);
     return cartItems ? JSON.parse(cartItems) : [];
   }
-  clearCart() {
-    localStorage.removeItem(this.cartKey);
-  }
+  // clearCart() {
+  //   localStorage.removeItem(this.cartKey);
+  // }
 
 
 }

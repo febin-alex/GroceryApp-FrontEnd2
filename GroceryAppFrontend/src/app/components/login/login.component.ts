@@ -39,7 +39,7 @@ export class LoginComponent {
      
       this.textMess = res.message;
       this.alertClass = "alert alert-success";
-      localStorage.setItem('token', res.user.id);
+      localStorage.setItem('token', res.user.Id);
       localStorage.setItem('user', JSON.stringify(res.user));
          this.router.navigateByUrl('/home');
       }else{

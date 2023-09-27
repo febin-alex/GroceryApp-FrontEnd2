@@ -14,7 +14,7 @@ export class SearchPageComponent {
   allProducts: IProduct[] = [];
   constructor(private dataService: DataService, private activatedRoute: ActivatedRoute) {
     //To search the Product based on Product Name
-    this.productName = activatedRoute.snapshot.paramMap.get('productName');
+    this.productName = this.activatedRoute.snapshot.paramMap.get('productName');
     this.dataService.getProductsBySearch(this.productName).subscribe((response: any) => {
 
       this.allProducts = response;

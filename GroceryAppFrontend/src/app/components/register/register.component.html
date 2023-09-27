@@ -74,6 +74,11 @@
                                   [class.is-invalid]="gender.touched && gender.invalid">
                                 <label for="female" class="form-check-label">Female</label>
                               </div>
+                              <div class="form-check form-check-inline">
+                                <input type="radio" id="others" name="gender" value="others" [(ngModel)]="userModel.Gender" required #gender="ngModel"
+                                  [class.is-invalid]="gender.touched && gender.invalid">
+                                <label for="others" class="form-check-label">Others</label>
+                              </div>
                             </div>
                             <small [class.d-none]="gender.valid || gender.untouched" class="text-danger">Gender is required</small>
                           </div>

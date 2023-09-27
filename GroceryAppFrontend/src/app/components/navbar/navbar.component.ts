@@ -35,14 +35,14 @@ export class NavbarComponent {
   onLogout() {
     this.authService.logout();
     this.router.navigateByUrl('login')
-    this.isLoggedIn = false;
+    //this.isLoggedIn = false;
     this.isLoggedIn = this.authService.checkToken();
   }
 
 
   //Search Function
   onSearchHandler(name: string) {
-    console.log(name);
+    //console.log(name);
     if (name != "") {
         this.router.navigate(["search/" + name]).then(() => {
         window.location.reload();
